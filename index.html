@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="A Compact Dynamic 3D Gaussian Representation for Real-Time Dynamic View Synthesis.">
+  <meta name="keywords" content="Real-time Novel View Synthesis, 3D Gaussian Splatting, Dynamic View Synthesis">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A Compact Dynamic 3D Gaussian Representation for Real-Time Dynamic View Synthesis</title>
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YHH1XPK5Z6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YHH1XPK5Z6');
+</script>
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-3 publication-title">A Compact Dynamic 3D Gaussian Representation for Real-Time Dynamic View Synthesis</h1>
+          <div class="is-size-4 publication-authors">
+            <span class="author-block">
+              <a href="https://raven38.github.io">Kai Katsumata</a>,</span>
+            <span class="author-block">
+              <a href="https://vmdlab.github.io/">Vo Minh Duc</a>,</span>
+            <span class="author-block">
+              <a href="https://www.nlab.ci.i.u-tokyo.ac.jp/index-e.html">Hideki Nakayama</a>,
+            </span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">The University of Tokyo</span>
+          </div>
+	  <div><br>
+	    <p class="is-size-4"><b>ECCV 2024</b></p>
+	  <div>
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2311.12897"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2311.12897"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- <\!-- Video Link. -\-> -->
+              <!-- <span class="link-block"> -->
+              <!--   <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA" -->
+              <!--      class="external-link button is-normal is-rounded is-dark"> -->
+              <!--     <span class="icon"> -->
+              <!--         <i class="fab fa-youtube"></i> -->
+              <!--     </span> -->
+              <!--     <span>Video</span> -->
+              <!--   </a> -->
+              <!-- </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/raven38/EfficientDynamic3DGaussian/"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+            <!--   <\!-- Dataset Link. -\-> -->
+            <!--   <span class="link-block"> -->
+            <!--     <a href="https://github.com/google/nerfies/releases/tag/0.1" -->
+            <!--        class="external-link button is-normal is-rounded is-dark"> -->
+            <!--       <span class="icon"> -->
+            <!--           <i class="far fa-images"></i> -->
+            <!--       </span> -->
+            <!--       <span>Data</span> -->
+            <!--       </a> -->
+            <!-- </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="./static/images/teaser.png"/>
+      <h2 class="subtitle has-text-centered">
+	Compact, fast, and high-quality dynamic view synthesis.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            3D Gaussian Splatting (3DGS) has shown remarkable success in synthesizing novel views given multiple views of a static scene.
+          </p>
+          <p>
+	    Yet, 3DGS faces challenges when applied to dynamic scenes because 3D Gaussian parameters need to be updated per timestep, requiring a large amount of memory and at least a dozen observations per timestep.
+          </p>
+          <p>
+	    To address these limitations, we present a compact dynamic 3D Gaussian representation that models positions and rotations as functions of time with a few parameter approximations while keeping other properties of 3DGS including scale, color and opacity invariant. Our method can dramatically reduce memory usage and relax a strict multi-view assumption. 
+          </p>
+          <p>
+	    In our experiments on monocular and multi-view scenarios, we show that our method not only matches state-of-the-art methods, often linked with slower rendering speeds, in terms of high rendering quality but also significantly surpasses them by achieving a rendering speed of $118$ frames per second (FPS) at a resolution of 1,352x1,014 on a single GPU.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+</section>
+
+
+
+<section class="hero is-light is-small">
+    <div class="container is-centered is-full-width is-max-desktop">
+      <h2 class="title is-3">Results</h2>
+      </div>
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="results-item">
+          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/dynerf/coffee_martini.mp4"
+                    type="video/mp4">
+          </video>
+	</div>
+        <div class="results-item">
+          <video poster="" id="spinach" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/dynerf/cook_spinach.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="results-item">
+          <video poster="" id="beef" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/dynerf/cut_roasted_beef.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="results-item">
+          <video poster="" id="steak" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/dynerf/sear_steak_short.mp4"
+                    type="video/mp4">
+          </video>
+	</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section" id="Concurrent Work">
+  <div class="container is-max-desktop">
+    <!-- Concurrent Work. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Related Links</h2>
+        <div class="content has-text-justified">
+	  <p>
+	    We express our gratitude for the seminal papers that introduced
+	    <a href="https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/">3D Gaussian Splatting</a> and <a href="https://dynamic3dgaussians.github.io/">Dynamic 3D Gaussians</a>.
+	  </p>
+          <p>
+            There's a lot of excellent work that was introduced around the same time as ours.
+          </p>
+          <p>
+            <a href="https://guanjunwu.github.io/4dgs/">4DGS</a> also addresses a dynamic extension of 3DGS.
+          </p>
+          <p>
+            There are probably many more by the time you are reading this. Check out survey papers on 3DGS (<a href="https://arxiv.org/abs/2401.03890">Chen, Guikun, and Wenguan Wang</a>;<a href="https://ieeexplore.ieee.org/abstract/document/10521791">Ben Fei, et al.</a>; <a href="https://arxiv.org/abs/2403.11134">Tong Wu, et al.</a>), and <a href="https://github.com/MrNeRF/awesome-3D-gaussian-splatting">MrNeRF's curated list of 3DGS papers</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Concurrent Work. -->
+    </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{katsumata2024compact,
+  title={A Compact Dynamic 3D Gaussian Representation for Real-Time Dynamic View Synthesis},
+  author={Katsumata, Kai and Vo, Duc Minh and Nakayama, Hideki},
+  booktitle={ECCV},
+  year={2024},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+	  <p>
+            We thank the authors of <a href="https://github.com/nerfies/nerfies.github.io" class="external-link">Nerfies</a> that kindly open sourced the template of this website.
+	  </p>
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
