@@ -169,3 +169,10 @@ body {
 #interpolation-image-wrapper img {
   border-radius: 5px;
 }
+
+.has-text-justified {
+    text-align: justify !important;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+}
