@@ -1,4 +1,4 @@
-# Nerfies
+# Compact Dynamic 3D Gaussian
 
 This is the repository that contains source code for the [Compact Dynamic 3D Gaussian website](https://compactdynamic3dgaussian.github.io).
 
